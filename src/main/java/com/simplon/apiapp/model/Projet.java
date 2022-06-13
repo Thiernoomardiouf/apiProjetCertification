@@ -37,4 +37,8 @@ public class Projet {
     @OneToMany(mappedBy = "projete", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Profil> profils;
+
+    @OneToMany(mappedBy = "projet_zone", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Zone> zones;
 }
