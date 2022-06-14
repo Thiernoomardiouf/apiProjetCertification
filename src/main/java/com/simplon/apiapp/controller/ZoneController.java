@@ -1,6 +1,5 @@
 package com.simplon.apiapp.controller;
 
-import com.simplon.apiapp.model.Partenaire;
 import com.simplon.apiapp.model.Zone;
 import com.simplon.apiapp.service.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
