@@ -1,8 +1,10 @@
 package com.simplon.apiapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
+@ToString
 @Table(name = "patenaires")
 public class Partenaire {
     @Id
@@ -24,7 +27,8 @@ public class Partenaire {
     private String email;
     private String adresse_web;
 
-    @OneToMany(mappedBy = "partenaire", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "partenaire", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Projet> projets;
+
 }

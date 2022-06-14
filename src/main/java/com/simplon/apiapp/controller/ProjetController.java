@@ -53,10 +53,6 @@ public class ProjetController {
             if(description != null){
                 p.setDescription(description);
             }
-            String zone = projet.getZone();
-            if(zone != null){
-                p.setZone(zone);
-            }
             double cout = projet.getCout();
             if(cout == 0){
                 p.setCout(cout);

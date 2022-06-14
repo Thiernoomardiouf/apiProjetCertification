@@ -1,8 +1,10 @@
 package com.simplon.apiapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
+@ToString
 @Table(name = "phases")
 public class Phase {
     @Id
@@ -27,11 +30,10 @@ public class Phase {
     private boolean etat_realisation;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "projet_id", nullable = false)
     private Projet projet;
 
-    @OneToMany(mappedBy = "phase", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "phase", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Livrable> livrables;
 
 }

@@ -3,6 +3,7 @@ package com.simplon.apiapp.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
+@ToString
 @Table(name = "profils")
 public class Profil {
     @Id
@@ -19,10 +21,8 @@ public class Profil {
     private boolean isChef;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "projet_id", nullable = false)
     private Projet projete;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "membre_id", nullable = false)
     private Membre membre;
 }
