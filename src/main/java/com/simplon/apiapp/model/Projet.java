@@ -39,8 +39,11 @@ public class Projet {
     @JsonIgnore
     private List<Profil> profils;
 
-    @OneToMany(mappedBy = "projet_zone", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "projet", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Zone> zones;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

@@ -31,4 +31,7 @@ public class Partenaire {
     @JsonIgnore
     private List<Projet> projets;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

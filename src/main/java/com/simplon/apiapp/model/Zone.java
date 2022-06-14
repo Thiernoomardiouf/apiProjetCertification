@@ -20,5 +20,5 @@ public class Zone {
     private String libelle;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Projet projet_zone;
+    private Projet projet;
 }

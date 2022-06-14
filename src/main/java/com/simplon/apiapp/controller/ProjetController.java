@@ -15,62 +15,30 @@ public class ProjetController {
     @Autowired
     private ProjetService projetService;
 
-    @GetMapping("/projets")
+    @GetMapping(path = "/projets")
     public List<Projet> getAllProjets(){
         return projetService.getAllProjet();
     }
 
-    @GetMapping("/projets/{id}")
+    @GetMapping(path = "/projets/{id}")
     public Optional<Projet> getProjet(@PathVariable("id") Long id){
         Optional<Projet> p = projetService.getProjet(id);
         return p;
     }
 
-    @GetMapping("/projets/delete/{id}")
+    @GetMapping(path = "/projets/delete/{id}")
     public void deleProjet(@PathVariable("id") Long id){
         projetService.deleteProjet(id);
     }
 
-    @PostMapping("/projets/add")
+    @PostMapping(path = "/projets/add")
     public Projet addProjet(@RequestBody Projet projet){
         return projetService.addProjet(projet);
     }
 
-    @PutMapping ("/projets/update/{id}")
+    @PutMapping (path = "/projets/update/{id}")
     public Projet updateProjet(@PathVariable("id") Long id, @RequestBody Projet projet){
-        Optional<Projet> prt = projetService.getProjet(id);
-        if(prt.isPresent()){
-            Projet p = prt.get();
-            String code = projet.getCode();
-            if(code != null){
-                p.setCode(code);
-            }
-            String nom = projet.getNom();
-            if(nom != null){
-                p.setNom(nom);
-            }
-            String description = projet.getDescription();
-            if(description != null){
-                p.setDescription(description);
-            }
-            double cout = projet.getCout();
-            if(cout == 0){
-                p.setCout(cout);
-            }
-            Date date_debut = projet.getDate_debut();
-            if(date_debut != null){
-                p.setDate_debut(date_debut);
-            }
-            Date date_fin = projet.getDate_fin();
-            if(date_fin != null){
-                p.setDate_fin(date_fin);
-            }
-
-            projetService.addProjet(p);
-            return p;
-        }
-        else {
-            return null;
-        }
-    }
+        projet.setId(id);
+        return projetService.addProjet(projet);
+   }
 }
