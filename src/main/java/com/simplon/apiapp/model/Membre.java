@@ -1,6 +1,7 @@
 package com.simplon.apiapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,6 @@ public class Membre {
     private String mot_de_passe;
 
     @OneToMany(mappedBy = "membre", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Profil> profils;
 }

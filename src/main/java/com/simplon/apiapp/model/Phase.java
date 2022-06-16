@@ -1,6 +1,7 @@
 package com.simplon.apiapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,11 +30,11 @@ public class Phase {
     private double montant;
     private boolean etat_realisation;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     private Projet projet;
 
     @OneToMany(mappedBy = "phase", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Livrable> livrables;
 
 }

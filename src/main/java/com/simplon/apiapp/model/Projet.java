@@ -1,6 +1,7 @@
 package com.simplon.apiapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,19 +32,16 @@ public class Projet {
     @ManyToOne
     private Partenaire partenaire;
 
-    @OneToMany(mappedBy = "projet", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "projet")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Phase> phases;
 
-    @OneToMany(mappedBy = "projete", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "projete")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Profil> profils;
 
-    @OneToMany(mappedBy = "projet", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "projet")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Zone> zones;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

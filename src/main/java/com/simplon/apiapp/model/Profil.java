@@ -20,9 +20,9 @@ public class Profil {
     private String libelle;
     private boolean isChef;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     private Projet projete;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     private Membre membre;
 }

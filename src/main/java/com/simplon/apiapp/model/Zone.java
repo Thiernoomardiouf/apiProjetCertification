@@ -19,6 +19,7 @@ public class Zone {
     private Long id;
     private String libelle;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     private Projet projet;
+
 }
