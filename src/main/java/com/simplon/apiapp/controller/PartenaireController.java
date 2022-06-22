@@ -1,6 +1,5 @@
 package com.simplon.apiapp.controller;
 
-import com.simplon.apiapp.exceptions.PartenaireIntrouvableException;
 import com.simplon.apiapp.model.Partenaire;
 import com.simplon.apiapp.service.PartenaireService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,8 @@ public class PartenaireController {
     }
 
     @GetMapping(path = "/partenaires/{id}")
-    public Optional<Partenaire> getPartenaire(@PathVariable("id") Long id) throws PartenaireIntrouvableException {
+    public Optional<Partenaire> getPartenaire(@PathVariable("id") Long id) {
         Optional<Partenaire> p = partenaireService.getPartenaire(id);
-        if(p==null) throw new PartenaireIntrouvableException("Le partenaire avec l'id " + id + " est INTROUVABLE.");
         return p;
     }
 

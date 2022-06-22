@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PartenaireRepository extends JpaRepository<Partenaire, Long> {
+    Partenaire findByCode(String code);
 }
