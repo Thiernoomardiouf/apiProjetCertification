@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,9 +18,9 @@ public class Zone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
-    @ManyToOne
+    @OneToMany(mappedBy = "zone")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Projet projet;
+    private List<Presence> presences;
 
     public Long getId() {
         return id;
@@ -37,11 +38,11 @@ public class Zone {
         this.libelle = libelle;
     }
 
-    public Projet getProjet() {
-        return projet;
+    public List<Presence> getPresences() {
+        return presences;
     }
 
-    public void setProjet(Projet projet) {
-        this.projet = projet;
+    public void setPresences(List<Presence> presences) {
+        this.presences = presences;
     }
 }

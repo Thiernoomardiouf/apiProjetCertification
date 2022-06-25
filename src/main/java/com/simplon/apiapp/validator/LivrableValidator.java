@@ -17,9 +17,6 @@ public class LivrableValidator {
         if (!StringUtils.hasLength(livrableDto.getLibelle())){
             errors.add("Veillez renseigner le nom du livrable");
         }
-        if (!StringUtils.hasLength(livrableDto.getDescription())){
-            errors.add("Veillez renseigner la description du livrable");
-        }
         if (!StringUtils.hasLength(livrableDto.getCode())){
             errors.add("Veillez donner le code du livrable");
         }

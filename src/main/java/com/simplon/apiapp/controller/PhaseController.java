@@ -8,34 +8,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static com.simplon.apiapp.utils.Constants.APP_ROOT;
+
 @RestController
 public class PhaseController {
 
     @Autowired
     private PhaseService phaseService;
 
-    @GetMapping(path = "/phases")
+    @GetMapping(path = APP_ROOT + "/phases")
     public List<Phase> getAllPhases(){
         return phaseService.getAllPhase();
     }
 
-    @GetMapping(path = "/phases/{id}")
+    @GetMapping(path = APP_ROOT + "/phases/{id}")
     public Optional<Phase> getPhase(@PathVariable("id") Long id){
         Optional<Phase> p = phaseService.getPhase(id);
         return p;
     }
 
-    @GetMapping(path = "/phases/delete/{id}")
+    @GetMapping(path = APP_ROOT + "/phases/delete/{id}")
     public void deletePhase(@PathVariable("id") Long id){
         phaseService.deletePhase(id);
     }
 
-    @PostMapping(path = "/phases/add")
+    @PostMapping(path = APP_ROOT + "/phases/add")
     public Phase addPhase(@RequestBody Phase phase){
         return phaseService.addPhase(phase);
     }
 
-    @PutMapping (path = "/phases/update/{id}")
+    @PutMapping (path = APP_ROOT + "/phases/update/{id}")
     public Phase updatePartenaire(@PathVariable("id") Long id, @RequestBody Phase phase){
         phase.setId(id);
         return phaseService.addPhase(phase);

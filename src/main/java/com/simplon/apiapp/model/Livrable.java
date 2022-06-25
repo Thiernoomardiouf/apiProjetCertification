@@ -18,7 +18,6 @@ public class Livrable {
     private Long id;
     private String code;
     private String libelle;
-    private String description;
     private String chemin;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -46,14 +45,6 @@ public class Livrable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getChemin() {

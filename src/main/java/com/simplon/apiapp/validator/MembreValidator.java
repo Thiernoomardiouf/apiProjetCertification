@@ -26,9 +26,6 @@ public class MembreValidator {
         if (!StringUtils.hasLength(membreDto.getLogin())){
             errors.add("Veillez donner le login de l'empoyé");
         }
-        if (!StringUtils.hasLength(membreDto.getMot_de_passe())){
-            errors.add("Veillez entre le mot de passe de l'employé");
-        }
         if (!StringUtils.hasLength(membreDto.getTelephone())){
             errors.add("Veillez donner le numéro de téléphone de l'employé");
         }

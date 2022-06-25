@@ -22,6 +22,10 @@ public class ProjetService {
         return projetRepository.findById(id);
     }
 
+    public Projet getProjetCode(String code){
+        return projetRepository.findByCode(code);
+    }
+
     public void deleteProjet(Long id){
         projetRepository.deleteById(id);
     }

@@ -22,6 +22,7 @@ public class Membre {
     private String nom;
     private String prenom;
     private String telephone;
+    private String email;
     private String login;
     private String mot_de_passe;
 
@@ -83,6 +84,14 @@ public class Membre {
 
     public void setMot_de_passe(String mot_de_passe) {
         this.mot_de_passe = mot_de_passe;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Profil> getProfils() {

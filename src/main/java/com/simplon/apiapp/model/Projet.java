@@ -1,6 +1,5 @@
 package com.simplon.apiapp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -36,9 +35,8 @@ public class Projet {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Profil> profils;
 
-    @OneToMany(mappedBy = "projet")
-    private List<Zone> zones;
-
+    @OneToMany(mappedBy = "projetz")
+    private List<Presence> presences;
     public Long getId() {
         return id;
     }
@@ -119,11 +117,11 @@ public class Projet {
         this.profils = profils;
     }
 
-    public List<Zone> getZones() {
-        return zones;
+    public List<Presence> getPresences() {
+        return presences;
     }
 
-    public void setZones(List<Zone> zones) {
-        this.zones = zones;
+    public void setPresences(List<Presence> presences) {
+        this.presences = presences;
     }
 }
