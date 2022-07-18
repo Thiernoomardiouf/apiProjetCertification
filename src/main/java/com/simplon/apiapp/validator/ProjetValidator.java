@@ -26,7 +26,7 @@ public class ProjetValidator {
         if (!StringUtils.hasLength(projet.getDescription())){
             errors.add("Veillez donner la description du projet");
         }
-        if (projet.getCout()==0){
+        if (projet.getCout()==null){
             errors.add("Veillez donner le cout du projet");
         }
         if (projet.getDate_debut()==null){

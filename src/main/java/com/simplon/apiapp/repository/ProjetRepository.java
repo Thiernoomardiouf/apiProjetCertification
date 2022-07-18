@@ -19,4 +19,22 @@ public interface ProjetRepository extends JpaRepository<Projet,Long> {
     List<Projet> findByCustonNativeQuery(@Param("nom") String p);
 
     List<Projet> findByCodeIgnoreCaseAndNomIgnoreCase(String code, String nom);
+
+    @Query("SELECT COUNT(id) from Projet")
+    Integer findByCountProjet();
+
+    @Query("SELECT COUNT(b.id)"
+            + "FROM Phase b "
+            + "INNER JOIN b.projet cat "
+            + "WHERE cat.id = :id"
+    )
+    public Integer findByNbrePhases(@Param("id") Long idprojet);
+
+    @Query("SELECT COUNT(b.id)"
+            + "FROM Phase b "
+            + "INNER JOIN b.projet cat "
+            + "WHERE cat.id = :id and b.etat_realisation = :etat"
+    )
+    public Integer findByNbreEtatPhases(@Param("id") Long idprojet, @Param("etat") boolean etat);
+
 }

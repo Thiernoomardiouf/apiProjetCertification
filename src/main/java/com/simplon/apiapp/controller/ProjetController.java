@@ -11,6 +11,7 @@ import java.util.Optional;
 import static com.simplon.apiapp.utils.Constants.APP_ROOT;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 public class ProjetController {
 
     @Autowired
@@ -47,4 +48,19 @@ public class ProjetController {
         projet.setId(id);
         return projetService.addProjet(projet);
    }
+
+    @GetMapping(path = APP_ROOT + "/projets/nombre")
+    public Integer nombreProjet(){
+       return projetService.nbreProjet();
+    }
+
+    @GetMapping(path = APP_ROOT + "/projets/nombrePhases/{id}")
+    public Integer nombrePhases(@PathVariable("id") Long id){
+        return projetService.nbrePhases(id);
+    }
+
+    @GetMapping(path = APP_ROOT + "/projets/nombrePhasesEtat/{id}/{etat}")
+    public Integer nombrePhasesEtat(@PathVariable("id") Long id, @PathVariable("etat") boolean etat){
+        return projetService.nbrePhasesEtat(id, etat);
+    }
 }

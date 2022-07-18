@@ -16,7 +16,7 @@ public class Presence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String taille;
+    private String siege;
 
     @ManyToOne
     private Zone zone;
@@ -32,12 +32,12 @@ public class Presence {
         this.id = id;
     }
 
-    public String getTaille() {
-        return taille;
+    public String getSiege() {
+        return siege;
     }
 
-    public void setTaille(String taille) {
-        this.taille = taille;
+    public void setSiege(String siege) {
+        this.siege = siege;
     }
 
     public Zone getZone() {

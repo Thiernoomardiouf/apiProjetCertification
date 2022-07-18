@@ -34,4 +34,16 @@ public class ProjetService {
         Projet p = projetRepository.save(projet);
         return p;
     }
+
+    public Integer nbreProjet(){
+        return projetRepository.findByCountProjet();
+    }
+
+    public Integer nbrePhases(Long id){
+        return projetRepository.findByNbrePhases(id);
+    }
+
+    public Integer nbrePhasesEtat(Long id, boolean etat){
+        return projetRepository.findByNbreEtatPhases(id, etat);
+    }
 }

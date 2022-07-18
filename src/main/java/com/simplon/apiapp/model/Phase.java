@@ -24,7 +24,6 @@ public class Phase {
     private String description;
     private Date date_debut;
     private Date date_fin;
-    private String document;
     private double montant;
     private boolean etat_realisation;
 
@@ -81,14 +80,6 @@ public class Phase {
 
     public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
     }
 
     public double getMontant() {

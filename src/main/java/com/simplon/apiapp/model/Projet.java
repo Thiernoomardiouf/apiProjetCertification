@@ -1,5 +1,6 @@
 package com.simplon.apiapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -21,8 +22,10 @@ public class Projet {
     private String code;
     private String nom;
     private String description;
-    private double cout;
+    private String cout;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date_debut;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date_fin;
 
     @ManyToOne
@@ -69,11 +72,11 @@ public class Projet {
         this.description = description;
     }
 
-    public double getCout() {
+    public String getCout() {
         return cout;
     }
 
-    public void setCout(double cout) {
+    public void setCout(String cout) {
         this.cout = cout;
     }
 

@@ -11,6 +11,7 @@ import java.util.Optional;
 import static com.simplon.apiapp.utils.Constants.APP_ROOT;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ZoneController {
 
     @Autowired
