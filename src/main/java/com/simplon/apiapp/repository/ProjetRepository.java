@@ -37,4 +37,12 @@ public interface ProjetRepository extends JpaRepository<Projet,Long> {
     )
     public Integer findByNbreEtatPhases(@Param("id") Long idprojet, @Param("etat") boolean etat);
 
+    @Query("SELECT COUNT(b.id)"
+            + "FROM Projet b "
+            + "INNER JOIN b.phases cat "
+            + "WHERE cat.etat_realisation = :etat"
+    )
+    public Integer findByNbreEtatProjet(@Param("etat") boolean etat);
+
+
 }

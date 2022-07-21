@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static com.simplon.apiapp.utils.Constants.APP_ROOT;
 
+
 @RestController
 @CrossOrigin(origins = {"*"})
 public class ProjetController {
@@ -62,5 +63,10 @@ public class ProjetController {
     @GetMapping(path = APP_ROOT + "/projets/nombrePhasesEtat/{id}/{etat}")
     public Integer nombrePhasesEtat(@PathVariable("id") Long id, @PathVariable("etat") boolean etat){
         return projetService.nbrePhasesEtat(id, etat);
+    }
+
+    @GetMapping(path = APP_ROOT + "/projets/nombreProjetEtat/{etat}")
+    public Integer nombreProjetEtat(@PathVariable("etat") boolean etat){
+        return projetService.nbreProjetEtat(etat);
     }
 }

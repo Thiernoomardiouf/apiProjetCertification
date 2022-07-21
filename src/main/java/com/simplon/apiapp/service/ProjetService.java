@@ -46,4 +46,8 @@ public class ProjetService {
     public Integer nbrePhasesEtat(Long id, boolean etat){
         return projetRepository.findByNbreEtatPhases(id, etat);
     }
+
+    public Integer nbreProjetEtat(boolean etat){
+        return projetRepository.findByNbreEtatProjet(etat);
+    }
 }

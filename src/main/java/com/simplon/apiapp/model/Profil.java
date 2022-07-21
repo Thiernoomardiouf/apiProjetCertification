@@ -16,7 +16,6 @@ public class Profil {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
-    private boolean isChef;
     @ManyToOne
     private Projet projete;
     @ManyToOne
@@ -36,14 +35,6 @@ public class Profil {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
-    }
-
-    public boolean isChef() {
-        return isChef;
-    }
-
-    public void setChef(boolean chef) {
-        isChef = chef;
     }
 
     public Projet getProjete() {
