@@ -1,6 +1,7 @@
 package com.simplon.apiapp.repository;
 
 import com.simplon.apiapp.model.Projet;
+import com.simplon.apiapp.model.Phase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -37,10 +38,7 @@ public interface ProjetRepository extends JpaRepository<Projet,Long> {
     )
     public Integer findByNbreEtatPhases(@Param("id") Long idprojet, @Param("etat") boolean etat);
 
-    @Query("SELECT COUNT(b.id)"
-            + "FROM Projet b "
-            + "INNER JOIN b.phases cat "
-            + "WHERE cat.etat_realisation = :etat"
+    @Query("SELECT COUNT(p.id) FROM Projet p WHERE p.id IN (SELECT ph.projet FROM p.phases ph WHERE ph.projet.id=p.id and ph.etat_realisation = :etat)"
     )
     public Integer findByNbreEtatProjet(@Param("etat") boolean etat);
 
