@@ -30,6 +30,18 @@ public class Membre {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Profil> profils;
 
+    @OneToMany(mappedBy = "membre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Rolesmembre> rolesmembres;
+
+    public List<Rolesmembre> getRolesmembres() {
+        return rolesmembres;
+    }
+
+    public void setRolesmembres(List<Rolesmembre> rolesmembres) {
+        this.rolesmembres = rolesmembres;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,4 +1,4 @@
-package com.simplon.apiapp.service.auth;
+package com.simplon.apiapp.exceptions.service.auth;
 
 import com.simplon.apiapp.model.Membre;
 import com.simplon.apiapp.repository.MembreRepository;

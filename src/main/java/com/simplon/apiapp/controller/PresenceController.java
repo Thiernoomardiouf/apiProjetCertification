@@ -1,8 +1,6 @@
 package com.simplon.apiapp.controller;
 
-import com.simplon.apiapp.model.Phase;
 import com.simplon.apiapp.model.Presence;
-import com.simplon.apiapp.service.PhaseService;
 import com.simplon.apiapp.service.PresenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

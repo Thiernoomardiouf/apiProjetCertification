@@ -1,10 +1,5 @@
 package com.simplon.apiapp.controller;
 
-import com.simplon.apiapp.auth.AuthentificationResponse;
-import com.simplon.apiapp.auth.AuthentionRequest;
-import com.simplon.apiapp.service.auth.ApplicationUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 //import org.springframework.security.authentication.AuthenticationManager;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.core.userdetails.UserDetails;
