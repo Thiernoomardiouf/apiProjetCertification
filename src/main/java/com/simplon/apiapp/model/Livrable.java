@@ -20,7 +20,6 @@ public class Livrable {
     private String libelle;
     private String chemin;
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Phase phase;
 
     public Long getId() {

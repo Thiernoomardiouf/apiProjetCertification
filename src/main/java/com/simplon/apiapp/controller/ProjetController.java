@@ -34,7 +34,7 @@ public class ProjetController {
         return projetService.getProjetCode(code);
     }
 
-    @GetMapping(path = APP_ROOT + "/projets/delete/{id}")
+    @DeleteMapping(path = APP_ROOT + "/projets/delete/{id}")
     public void deleProjet(@PathVariable("id") Long id){
         projetService.deleteProjet(id);
     }

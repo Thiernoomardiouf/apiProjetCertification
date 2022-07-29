@@ -3,6 +3,8 @@ package com.simplon.apiapp.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,9 +31,10 @@ public class Projet {
     private Date date_fin;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Partenaire partenaire;
 
-    @OneToMany(mappedBy = "projet")
+    @OneToMany(mappedBy = "projet",fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST, CascadeType.REMOVE })
     private List<Phase> phases;
 
     @OneToMany(mappedBy = "projete")

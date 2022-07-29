@@ -32,6 +32,7 @@ public class Phase {
     private Projet projet;
 
     @OneToMany(mappedBy = "phase", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Livrable> livrables;
 
     public Long getId() {
