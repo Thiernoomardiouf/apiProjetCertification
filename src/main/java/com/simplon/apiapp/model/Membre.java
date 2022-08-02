@@ -3,9 +3,14 @@ package com.simplon.apiapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,17 +19,18 @@ import java.util.List;
 @ToString
 @Builder
 @Table(name = "membres")
-public class Membre {
+public class Membre implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String matricule;
-    private String nom;
-    private String prenom;
+    private String lastName;
+    private String firstName;
     private String telephone;
     private String email;
-    private String login;
-    private String mot_de_passe;
+    private String username;
+    private String password;
+    private Boolean enabled;
 
     @OneToMany(mappedBy = "membre", fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -33,14 +39,6 @@ public class Membre {
     @OneToMany(mappedBy = "membre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Rolesmembre> rolesmembres;
-
-    public List<Rolesmembre> getRolesmembres() {
-        return rolesmembres;
-    }
-
-    public void setRolesmembres(List<Rolesmembre> rolesmembres) {
-        this.rolesmembres = rolesmembres;
-    }
 
     public Long getId() {
         return id;
@@ -58,20 +56,28 @@ public class Membre {
         this.matricule = matricule;
     }
 
-    public String getNom() {
-        return nom;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getTelephone() {
@@ -82,22 +88,6 @@ public class Membre {
         this.telephone = telephone;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -106,11 +96,66 @@ public class Membre {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        Set<Authority> set = new HashSet<>();
+
+        this.rolesmembres.forEach(rolesmembre -> {
+            set.add(new Authority(rolesmembre.getRole().getLibelle()));
+        });
+        return set;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public List<Profil> getProfils() {
         return profils;
     }
 
     public void setProfils(List<Profil> profils) {
         this.profils = profils;
+    }
+
+    public List<Rolesmembre> getRolesmembres() {
+        return rolesmembres;
+    }
+
+    public void setRolesmembres(List<Rolesmembre> rolesmembres) {
+        this.rolesmembres = rolesmembres;
     }
 }

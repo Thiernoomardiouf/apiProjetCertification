@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface MembreRepository extends JpaRepository<Membre, Long> {
-    Membre findByMatricule(String matricule);
+    public Membre findByUsername(String username);
     Optional<Membre> findByEmail(String email);
 }

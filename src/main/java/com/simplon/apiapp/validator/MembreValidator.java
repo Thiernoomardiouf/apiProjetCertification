@@ -14,16 +14,16 @@ public class MembreValidator {
         if (membreDto==null){
             errors.add("Veillez renseigner les informations du partenaire");
         }
-        if (!StringUtils.hasLength(membreDto.getNom())){
+        if (!StringUtils.hasLength(membreDto.getLastName())){
             errors.add("Veillez renseigner le nom de l'employer");
         }
-        if (!StringUtils.hasLength(membreDto.getPrenom())){
+        if (!StringUtils.hasLength(membreDto.getFirstName())){
             errors.add("Veillez renseigner le prenom de l'employé");
         }
         if (!StringUtils.hasLength(membreDto.getMatricule())){
             errors.add("Veillez donner la matricule de l'employé");
         }
-        if (!StringUtils.hasLength(membreDto.getLogin())){
+        if (!StringUtils.hasLength(membreDto.getUsername())){
             errors.add("Veillez donner le login de l'empoyé");
         }
         if (!StringUtils.hasLength(membreDto.getTelephone())){

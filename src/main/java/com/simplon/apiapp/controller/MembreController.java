@@ -22,9 +22,14 @@ public class MembreController {
         return membreService.getAllMembre();
     }
 
-    @GetMapping(path = APP_ROOT + "/membres/{id}")
-    public Optional<Membre> getPartenaire(@PathVariable("id") Long id){
+    @GetMapping(path = APP_ROOT + "/membre/{id}")
+    public Optional<Membre> getMembre(@PathVariable("id") Long id){
         Optional<Membre> p = membreService.getMembre(id);
+        return p;
+    }
+    @GetMapping(path = APP_ROOT + "/membres/{username}")
+    public Membre getMembreByUsername(@PathVariable("username") String username){
+        Membre p = membreService.getMembreByUsername(username);
         return p;
     }
 
@@ -39,7 +44,7 @@ public class MembreController {
     }
 
     @PutMapping (path = APP_ROOT + "/membres/update/{id}")
-    public Membre updatePartenaire(@PathVariable("id") Long id, @RequestBody Membre membre){
+    public Membre updateMembre(@PathVariable("id") Long id, @RequestBody Membre membre){
         membre.setId(id);
         return membreService.addMembre(membre);
     }

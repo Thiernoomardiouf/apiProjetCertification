@@ -22,6 +22,10 @@ public class MembreService {
         return membreRepository.findById(id);
     }
 
+    public Membre getMembreByUsername(String username){
+        return membreRepository.findByUsername(username);
+    }
+
     public void deleteMembre(Long id){
         membreRepository.deleteById(id);
     }
