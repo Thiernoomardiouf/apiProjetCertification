@@ -19,7 +19,7 @@ public class Role {
     private Long id;
     private String libelle;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Rolesmembre> rolesmembre;
 

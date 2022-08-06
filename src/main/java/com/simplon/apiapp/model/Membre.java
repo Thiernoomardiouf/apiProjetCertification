@@ -36,9 +36,9 @@ public class Membre implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Profil> profils;
 
-    @OneToMany(mappedBy = "membre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "membre", fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Rolesmembre> rolesmembres;
+    private List<Rolesmembre> rolesmembres ;
 
     public Long getId() {
         return id;
@@ -123,15 +123,26 @@ public class Membre implements UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
+    public List<Rolesmembre> getRolesmembres() {
+        return rolesmembres;
+    }
+
+    public void setRolesmembres(List<Rolesmembre> rolesmembres) {
+        this.rolesmembres = rolesmembres;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Set<Authority> set = new HashSet<>();
-
-        this.rolesmembres.forEach(rolesmembre -> {
-            set.add(new Authority(rolesmembre.getRole().getLibelle()));
-        });
+        if (rolesmembres != null) {
+            for (Rolesmembre rolesmembre : rolesmembres) {
+                set.add(new Authority(rolesmembre.getRole().getLibelle()));
+            }
+        }
+//        this.rolesmembres.forEach(rolesmembre -> {
+//            set.add(new Authority(rolesmembre.getRole().getLibelle()));
+//        });
         return set;
     }
 
@@ -151,11 +162,4 @@ public class Membre implements UserDetails {
         this.profils = profils;
     }
 
-    public List<Rolesmembre> getRolesmembres() {
-        return rolesmembres;
-    }
-
-    public void setRolesmembres(List<Rolesmembre> rolesmembres) {
-        this.rolesmembres = rolesmembres;
-    }
 }

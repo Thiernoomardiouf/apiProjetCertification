@@ -17,12 +17,29 @@ public class Rolesmembre {
     private Long id;
     @ManyToOne
     private Role role;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Membre membre;
 
     public Long getId() {
         return id;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Membre getMembre() {
+        return membre;
+    }
+
+    public void setMembre(Membre membre) {
+        this.membre = membre;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
